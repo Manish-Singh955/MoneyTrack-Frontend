@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../config/api";
 
 function Budgets() {
 
@@ -29,7 +30,7 @@ function Budgets() {
 
       const response =
         await axios.get(
-          "http://localhost:5000/api/categories",
+          `${API_BASE_URL}/api/categories`,
           {
             headers: {
               Authorization:
@@ -67,7 +68,7 @@ function Budgets() {
 
       const response =
         await axios.get(
-          "http://localhost:5000/api/budgets/calculations",
+          `${API_BASE_URL}/api/budgets/calculations`,
           {
             params: {
               month: form.month
@@ -133,7 +134,7 @@ function Budgets() {
     try {
 
       await axios.post(
-        "http://localhost:5000/api/budgets",
+        `${API_BASE_URL}/api/budgets`,
         form,
         {
           headers: {
@@ -176,7 +177,7 @@ function Budgets() {
     try {
 
       await axios.delete(
-        `http://localhost:5000/api/budgets/${id}`,
+        `${API_BASE_URL}/api/budgets/${id}`,
         {
           headers: {
             Authorization:

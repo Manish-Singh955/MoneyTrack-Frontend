@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import { jsPDF } from "jspdf";
+import { API_BASE_URL } from "../config/api";
 
 const formatCurrency = (value) =>
   new Intl.NumberFormat("en-IN", {
@@ -27,7 +28,7 @@ function Reports() {
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/transactions", {
+        const response = await axios.get(`${API_BASE_URL}/api/transactions`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setTransactions(response.data.transactions || []);

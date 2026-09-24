@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { API_BASE_URL } from "../config/api";
 
 const carouselItems = [
   {
@@ -52,8 +53,8 @@ function Dashboard() {
       };
       const month = new Date().toISOString().slice(0, 7);
       const [dashboardResponse, budgetResponse] = await Promise.all([
-        axios.get("http://localhost:5000/api/dashboard/summary", { headers }),
-        axios.get("http://localhost:5000/api/budgets/calculations", {
+        axios.get(`${API_BASE_URL}/api/dashboard/summary`, { headers }),
+        axios.get(`${API_BASE_URL}/api/budgets/calculations`, {
           params: { month },
           headers,
         }),

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { API_BASE_URL } from "../config/api";
 
 function Transactions() {
   const [transactions, setTransactions] = useState([]);
@@ -17,7 +18,7 @@ function Transactions() {
 
   const fetchTransactions = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/transactions", {
+      const response = await axios.get(`${API_BASE_URL}/api/transactions`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -56,7 +57,7 @@ function Transactions() {
   const saveTransaction = async (id) => {
     try {
       await axios.patch(
-        `http://localhost:5000/api/transactions/${id}`,
+        `${API_BASE_URL}/api/transactions/${id}`,
         editForm,
         {
           headers: {
@@ -80,7 +81,7 @@ function Transactions() {
     }
 
     try {
-      await axios.delete(`http://localhost:5000/api/transactions/${id}`, {
+      await axios.delete(`${API_BASE_URL}/api/transactions/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

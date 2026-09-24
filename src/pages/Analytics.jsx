@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../config/api";
 
 function Analytics() {
   const [analytics, setAnalytics] = useState(null);
@@ -11,11 +12,11 @@ function Analytics() {
     const fetchAnalytics = async () => {
       try {
         const [monthlyResponse, categoryResponse] = await Promise.all([
-          axios.get("http://localhost:5000/api/analytics/monthly", {
+          axios.get(`${API_BASE_URL}/api/analytics/monthly`, {
             params: { month },
             headers: { Authorization: `Bearer ${token}` },
           }),
-          axios.get("http://localhost:5000/api/analytics/category-expenses", {
+          axios.get(`${API_BASE_URL}/api/analytics/category-expenses`, {
             params: { month },
             headers: { Authorization: `Bearer ${token}` },
           }),

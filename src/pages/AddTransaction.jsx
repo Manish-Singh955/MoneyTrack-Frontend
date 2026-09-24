@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../config/api";
 
 function AddTransaction() {
 
@@ -31,7 +32,7 @@ function AddTransaction() {
 
         const response =
           await axios.get(
-            "http://localhost:5000/api/categories",
+            `${API_BASE_URL}/api/categories`,
             {
               headers: {
                 Authorization:
@@ -74,7 +75,7 @@ function AddTransaction() {
     try {
 
       await axios.post(
-        "http://localhost:5000/api/transactions",
+        `${API_BASE_URL}/api/transactions`,
         formData,
         {
           headers: {

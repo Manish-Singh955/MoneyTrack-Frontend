@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../config/api";
 
 function Notifications() {
 
@@ -17,7 +18,7 @@ function Notifications() {
 
       const response =
         await axios.get(
-          "http://localhost:5000/api/notifications",
+          `${API_BASE_URL}/api/notifications`,
           {
             headers: {
               Authorization:
@@ -48,7 +49,7 @@ function Notifications() {
 
         await axios.put(
 
-          `http://localhost:5000/api/notifications/${id}/read`,
+          `${API_BASE_URL}/api/notifications/${id}/read`,
 
           {},
 

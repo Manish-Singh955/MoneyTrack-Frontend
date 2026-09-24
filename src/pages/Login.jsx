@@ -4,6 +4,7 @@ import {
   Link,
   useNavigate,
 } from "react-router-dom";
+import { API_BASE_URL } from "../config/api";
 
 function Login() {
 
@@ -17,7 +18,7 @@ function Login() {
   const [message, setMessage] = useState("");
 
   const googleLoginUrl =
-    "http://localhost:5000/api/auth/google";
+    `${API_BASE_URL}/api/auth/google`;
 
 
   const handleChange = (e) => {
@@ -37,7 +38,7 @@ function Login() {
     try {
 
       const response = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        `${API_BASE_URL}/api/auth/login`,
         formData
       );
 
